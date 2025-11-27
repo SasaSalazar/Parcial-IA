@@ -1,12 +1,12 @@
+
 (define (problem generated-problem)
   (:domain generated_domain)
-  
-  (:objects 
-    cafe robot - object
-    home - location)
-
+  (:objects
+    robot preparar té hervir agua tetera - object
+    home - location
+  )
   (:init
     (at robot home)
   )
-  (:goal (done robot))
+  (:goal (step-done-6))
 )

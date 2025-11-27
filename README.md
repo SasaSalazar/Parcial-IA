@@ -1,4 +1,52 @@
-# Parcial — NL to PDDL (Web UI)
+# Parcial — NL to PDDL (Web UI) VERSION 2
+
+
+Esta es la **Versión 2** del proyecto.  
+Contiene mejoras importantes sobre la versión 1, incluyendo:
+
+- Extracción más precisa de objetos.  
+- Mejor manejo de secuencias lógicas.  
+- Precondiciones y efectos más consistentes.  
+- Modelo PDDL más adecuado para planificadores automáticos.
+
+pero aun tiene errores no es perfecta.
+
+Es la versión **recomendada** para la evaluación.
+
+---
+
+
+# ⚠️ Instrucciones obligatorias para ejecutar correctamente
+
+## 1. Solo usar esta versión de manera aislada  
+Por favor evite tener dos versiones del proyecto descargadas al mismo tiempo.
+
+Flask puede fallar si detecta archivos duplicados, rutas repetidas o múltiples aplicaciones relacionadas.
+
+## 2. Si ya probó la versión 1
+
+Debe hacer lo siguiente ANTES de probar esta versión:
+
+1. Cerrar toda ventana donde Flask haya estado corriendo.  
+2. Eliminar la carpeta completa de `Parcial-IA` previamente descargada.  
+3. Clonar únicamente esta rama.  
+4. Ejecutar Flask desde aquí.
+
+## 3. Cada versión está en una rama separada  
+- No mezclar archivos entre ramas.  
+- No mover archivos de una versión a otra.  
+- No combinar carpetas.
+- No respirar >:c.
+
+---
+
+# Cómo clonar exactamente esta versión
+
+```
+git clone --branch version-2 --single-branch https://github.com/TU_USUARIO/Parcial-IA.git
+cd Parcial-IA
+```
+-O descarga directamente el .zip en github depensiendo de la rama/version que desees probar.
 
 ## Requisitos
 - Python 3.8+
