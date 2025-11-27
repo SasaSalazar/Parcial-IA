@@ -14,11 +14,11 @@ Para la evaluación del parcial, **por favor revisar únicamente las ramas:**
 - Base para integraciones posteriores.
 
 ## Cómo clonar el repositorio (opcional)
-en terminal:
-git clone https://github.com/TU_USUARIO/Parcial-IA.git
+ven terminal:
+git clone https://github.com/SasaSalazar/Parcial-IA.git
 cd Parcial-IA.
-con el link:
-o lo puedes decargar del zip en git directamente
+-con el link:
+Lo puedes decargar del zip en git directamente
 
 ## Requisitos
 - Python 3.8+
