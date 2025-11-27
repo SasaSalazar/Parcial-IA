@@ -1,4 +1,24 @@
-# Parcial — NL to PDDL (Web UI)
+# Parcial — NL to PDDL (Web UI) (RAMA: main)
+
+**IMPORTANTE:** Esta rama `main` es la rama principal del repositorio.  
+No corresponde a la versión final del proyecto. Se usa únicamente como base para merges desde las ramas de trabajo.
+
+Para la evaluación del parcial, **por favor revisar únicamente las ramas:**
+- `version-1`
+- `version-2` (la más precisa y recomendada)
+- ...las que vengan
+
+## ¿Qué contiene esta rama?
+- Estructura general del proyecto.
+- Archivos iniciales del generador NL → PDDL.
+- Base para integraciones posteriores.
+
+## Cómo clonar el repositorio (opcional)
+en terminal:
+git clone https://github.com/TU_USUARIO/Parcial-IA.git
+cd Parcial-IA.
+con el link:
+o lo puedes decargar del zip en git directamente
 
 ## Requisitos
 - Python 3.8+
