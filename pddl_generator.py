@@ -2,11 +2,6 @@
 
 # NOTA: esta es la version 2.1 del generador PDDL, este utiliza un NER heurístico
 
-# pddl_generator.py — Version 3.2
-# Profesional, compatible con app.py, sin romper generate_pddl_from_instruction
-# Contiene: NER heurístico, orden lógico, soporte condiciones, paralelismo,
-# acciones complejas, neutralización, reparación del bug de parámetros.
-
 import re
 import json
 
