@@ -1,4 +1,39 @@
-# Parcial — NL to PDDL (Web UI)
+# Parcial — NL to PDDL (Web UI) VERSION 1
+
+Esta es la **Versión 1** del proyecto.  
+Es funcional y genera correctamente `domain.pddl` y `problem.pddl`, pero utiliza un modelo más simple que la Versión 2.
+
+
+# ⚠️ Instrucciones muy importantes para evitar errores
+
+Por favor siga estas indicaciones textualmente para evitar conflictos al ejecutar Flask:
+
+## 1. Solo pruebe **una versión del proyecto a la vez**  
+No descargue o mantenga dos carpetas distintas del proyecto en el mismo computador.
+
+Flask detecta conflictos cuando existen dos copias del mismo proyecto o dos aplicaciones similares.
+
+## 2. Si desea probar otra versión (p. ej. version-2)
+Debe hacer esto EXACTAMENTE:
+
+1. **Cerrar** cualquier ventana de terminal que esté ejecutando Flask.  
+2. **Eliminar por completo** la carpeta actual del proyecto.  
+3. **Clonar o descargar nuevamente dependiendo de la version deseada por rama** la otra rama que desee probar.  
+4. Ejecutar Flask desde esa nueva carpeta.
+
+## 3. No mezclar ramas  
+Por favor **no mezclar archivos** entre versiones.  
+Cada rama representa un estado distinto del proyecto.
+
+---
+
+# Cómo clonar esta versión exactamente
+
+```
+git clone --branch version-1 --single-branch https://github.com/SasaSalazar/Parcial-IA.git
+cd Parcial-IA
+```
+
 
 ## Requisitos
 - Python 3.8+
