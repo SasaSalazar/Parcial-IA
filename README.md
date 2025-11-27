@@ -14,9 +14,10 @@ Para la evaluación del parcial, **por favor revisar únicamente las ramas:**
 - Base para integraciones posteriores.
 
 ## Cómo clonar el repositorio (opcional)
-ven terminal:
+-en terminal:
 git clone https://github.com/SasaSalazar/Parcial-IA.git
 cd Parcial-IA.
+
 -con el link:
 Lo puedes decargar del zip en git directamente
 
