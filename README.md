@@ -33,7 +33,8 @@ Lo puedes decargar del zip en git directamente
 - output/ (se crea automáticamente)
 
 ## Ejecutar
-1. En terminal: carpeta parcial-inteligencia artificial
+
+-En terminal: carpeta parcial-inteligencia artificial
 
 -pip install flask requests flask-cors
 
