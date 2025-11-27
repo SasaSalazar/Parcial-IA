@@ -1,0 +1,91 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Parcial — NL → PDDL</title>
+  <link rel="stylesheet" href="/static/style.css" />
+</head>
+<body>
+  <main class="container">
+    <h1>Parcial — NL → PDDL</h1>
+    <p class="lead">Escribe una instrucción (español / inglés) y genera domain + problem PDDL.</p>
+
+    <textarea id="instruction" placeholder="Ej.: 'ir a comprar un café' o 'make a coffee'"></textarea>
+
+    <div class="buttons">
+      <button id="btn-generate">Generar PDDL</button>
+      <button id="btn-solve">Generar + Obtener plan (remoto)</button>
+    </div>
+
+    <section class="output">
+      <h2>Meta</h2>
+      <pre id="meta">—</pre>
+
+      <h2>domain.pddl</h2>
+      <pre id="domain">—</pre>
+
+      <h2>problem.pddl</h2>
+      <pre id="problem">—</pre>
+
+      <h2>Plan (solver)</h2>
+      <pre id="plan">Pulse "Generar + Obtener plan" para solicitar un plan al solver remoto.</pre>
+
+      <div class="downloads">
+        <a id="dl-domain" href="#" download="domain.pddl">Descargar domain.pddl</a>
+        <a id="dl-problem" href="#" download="problem.pddl">Descargar problem.pddl</a>
+      </div>
+    </section>
+  </main>
+
+<script>
+async function postJSON(url, body){
+  const res = await fetch(url, {
+    method: 'POST',
+    headers: {'Content-Type':'application/json'},
+    body: JSON.stringify(body)
+  });
+  if (!res.ok) {
+    const text = await res.text();
+    throw new Error("HTTP " + res.status + " - " + text);
+  }
+  return res.json();
+}
+
+document.getElementById('btn-generate').addEventListener('click', async () => {
+  const instr = document.getElementById('instruction').value.trim();
+  if(!instr){ alert('Escribe una instrucción'); return; }
+  try {
+    const res = await postJSON('/generate', {instruction: instr});
+    document.getElementById('domain').textContent = res.domain;
+    document.getElementById('problem').textContent = res.problem;
+    document.getElementById('meta').textContent = JSON.stringify(res.meta, null, 2);
+    document.getElementById('plan').textContent = '—';
+
+    document.getElementById('dl-domain').href = '/download/domain.pddl';
+    document.getElementById('dl-problem').href = '/download/problem.pddl';
+  } catch (e) {
+    alert("Error: " + e);
+  }
+});
+
+document.getElementById('btn-solve').addEventListener('click', async () => {
+  const instr = document.getElementById('instruction').value.trim();
+  if(!instr){ alert('Escribe una instrucción'); return; }
+  try {
+    const gen = await postJSON('/generate', {instruction: instr});
+    const solverResp = await postJSON('/solve', {domain: gen.domain, problem: gen.problem});
+    document.getElementById('domain').textContent = gen.domain;
+    document.getElementById('problem').textContent = gen.problem;
+    document.getElementById('meta').textContent = JSON.stringify(gen.meta, null, 2);
+    document.getElementById('plan').textContent = JSON.stringify(solverResp, null, 2);
+
+    document.getElementById('dl-domain').href = '/download/domain.pddl';
+    document.getElementById('dl-problem').href = '/download/problem.pddl';
+  } catch (e) {
+    alert("Error: " + e);
+  }
+});
+</script>
+</body>
+</html>
