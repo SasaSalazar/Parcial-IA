@@ -33,7 +33,7 @@ Cada rama representa un estado distinto del proyecto.
 git clone --branch version-1 --single-branch https://github.com/SasaSalazar/Parcial-IA.git
 cd Parcial-IA
 ```
-
+- O descarga directamente el .zip en github depensiendo de la rama/version que desees probar
 
 ## Requisitos
 - Python 3.8+
