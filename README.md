@@ -5,7 +5,8 @@ No corresponde a la versión final del proyecto. Se usa únicamente como base pa
 
 Para la evaluación del parcial, **por favor revisar únicamente las ramas:**
 - `version-1`
-- `version-2` (la más precisa y recomendada)
+- `version-2` (menos pior)
+- `version-3` (la más precisa y recomendada hasta el momento)
 - ...las que vengan
 
 ## ¿Qué contiene esta rama?
