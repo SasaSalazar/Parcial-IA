@@ -1,41 +1,41 @@
-# Parcial — NL to PDDL (Web UI) VERSION 2
+# Parcial — NL to PDDL (Web UI) VERSION 3
 
+Esta es la **Versión 3** del proyecto.  
+Representa un salto importante respecto a las versiones anteriores.  
+Las mejoras se enfocan en limpieza del dominio, coherencia de steps, acciones únicas y una estructura más adecuada para planificadores reales.
 
-Esta es la **Versión 2** del proyecto.  
-Contiene mejoras importantes sobre la versión 1, incluyendo:
+Incluye:
 
-- Extracción más precisa de objetos.  
-- Mejor manejo de secuencias lógicas.  
-- Precondiciones y efectos más consistentes.  
-- Modelo PDDL más adecuado para planificadores automáticos.
+- Dominio más limpio y sin predicados basura.  
+- Steps generados con lógica más estable.  
+- Acciones con índices para evitar colisiones.  
+- Mejor interpretación de conectores temporales (“antes de…”, “luego…”, “solo después de…”).  
+- Goals basados en `step-done-N`.  
+- Menos acciones fantasma y sintaxis más consistente.
 
-pero aun tiene errores no es perfecta.
-
-Es la versión **recomendada** para la evaluación.
+Es la versión **más recomendable** para ver la evolución técnica.
 
 ---
-
 
 # ⚠️ Instrucciones obligatorias para ejecutar correctamente
 
 ## 1. Solo usar esta versión de manera aislada  
-Por favor evite tener dos versiones del proyecto descargadas al mismo tiempo.
+Evitar tener varias versiones del proyecto descargadas al mismo tiempo.  
+Flask puede fallar por archivos duplicados, rutas repetidas o aplicaciones mezcladas.
 
-Flask puede fallar si detecta archivos duplicados, rutas repetidas o múltiples aplicaciones relacionadas.
+## 2. Si ya probó V1 o V2  
+Debe:
 
-## 2. Si ya probó la versión 1
-
-Debe hacer lo siguiente ANTES de probar esta versión:
-
-1. Cerrar toda ventana donde Flask haya estado corriendo.  
-2. Eliminar la carpeta completa de `Parcial-IA` previamente descargada.  
+1. Cerrar toda ventana donde Flask haya corrido.  
+2. Eliminar cualquier carpeta previa de `Parcial-IA`.  
 3. Clonar únicamente esta rama.  
 4. Ejecutar Flask desde aquí.
 
 ## 3. Cada versión está en una rama separada  
-- No mezclar archivos entre ramas.  
-- No mover archivos de una versión a otra.  
-- No combinar carpetas.
+- No mezclar carpetas entre versiones.  
+- No copiar archivos de una rama a otra.  
+- No ejecutar dos versiones a la vez.  
+- Esta versión se prueba **sola**.
 - No respirar >:c.
 
 ---
@@ -43,7 +43,7 @@ Debe hacer lo siguiente ANTES de probar esta versión:
 # Cómo clonar exactamente esta versión
 
 ```
-git clone --branch version-2 --single-branch https://github.com/TU_USUARIO/Parcial-IA.git
+git clone --branch version-3 --single-branch https://github.com/TU_USUARIO/Parcial-IA.git
 cd Parcial-IA
 ```
 -O descarga directamente el .zip en github depensiendo de la rama/version que desees probar.
@@ -60,12 +60,14 @@ cd Parcial-IA
 - output/ (se crea automáticamente)
 
 ## Ejecutar
-1. En terminal: carpeta parcial-inteligencia artificial
 
-pip install flask requests flask-cors
-python app.py
+-En terminal: carpeta parcial-inteligencia artificial
 
-2. Abre en navegador: http://127.0.0.1:5000
+-pip install flask requests flask-cors
+
+-python app.py
+
+-Abre en navegador: http://127.0.0.1:5000
 
 ## Uso
 - Escribe una instrucción (ES o EN), pulsa *Generar PDDL*.

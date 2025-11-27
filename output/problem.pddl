@@ -2,11 +2,11 @@
 (define (problem generated-problem)
   (:domain generated_domain)
   (:objects
-    robot preparar té hervir agua tetera - object
+    agente arreglar máquina tener destornillador robot - object
     home - location
   )
   (:init
     (at robot home)
   )
-  (:goal (step-done-6))
+  (:goal (step-done-1))
 )

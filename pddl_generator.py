@@ -1,8 +1,8 @@
-# pddl_generator.py (Versión 3.1 NER heurístico por que que fastidio)
+# pddl_generator.py (Versión 3 NER heurístico CORRECION DE LA CORRECION)
 
-# NOTA: esta es la version 2.1 del generador PDDL, este utiliza un NER heurístico
-
-# pddl_generator.py — Version 3.2
+# pddl_generator.py — Version 3.3 (mejoras orden, NER, parámetros, goal)
+# Profesional, compatible con app.py; mejoras: manejo de “solo después de”,
+# NER más estricto, parámetros correctos, goal correcto. — Version 3.2
 # Profesional, compatible con app.py, sin romper generate_pddl_from_instruction
 # Contiene: NER heurístico, orden lógico, soporte condiciones, paralelismo,
 # acciones complejas, neutralización, reparación del bug de parámetros.
@@ -15,9 +15,9 @@ import json
 # -----------------------------
 STOPWORDS = {
     "el", "la", "lo", "los", "las", "un", "una", "unos", "unas",
-    "de", "del", "al", "a", "en", "pero", "primero", "que", "tiene",
-    "para", "con", "su", "sus", "y", "o", "u", "se", "debe", "deben",
-    "debo", "debes", "solo", "despues", "después", "antes", "luego"
+    "de", "del", "al", "a", "en", "pero", "primero", "solo", "solo después",
+    "despues", "después", "antes", "que", "y", "o", "u", "se", "tiene", "tienen",
+    "debe", "deben", "para", "con", "su", "sus", "lo", "la", "las", "los"
 }
 
 # -----------------------------
@@ -57,7 +57,11 @@ VERB_ACTION_MAP = {
 
 def extract_nouns(text):
     words = re.findall(r"[a-záéíóúñ]+", text.lower())
-    return [w for w in words if w not in STOPWORDS]
+    nouns = []
+    for w in words:
+        if w not in STOPWORDS and w not in VERB_ACTION_MAP:
+            nouns.append(w)
+    return nouns
 
 # heurística básica: si suena a lugar
 LOCATION_HINTS = {"cocina", "cuarto", "habitacion", "habitación", "sala", "mesa", "estanteria", "estantería", "laboratorio", "dormitorio", "home"}
@@ -70,8 +74,8 @@ TARGET_HINTS = {"enemigo", "mosquito", "amenaza", "intruso", "objetivo", "target
 
 def detect_order(text):
     text = text.lower()
-    if "pero primero" in text or "antes de" in text:
-        return "reverse"  # indica que la primera acción mencionada va después
+    if "pero primero" in text or "antes de" in text or "solo después" in text or "solo despues" in text:
+        return "reverse"
     return "normal"
 
 # -----------------------------
@@ -156,9 +160,10 @@ def build_domain(actions):
 # Construir el problema
 # -----------------------------
 
-def build_problem(objs, locs):
+def build_problem(objs, locs, steps):
     obj_str = " ".join(objs)
     loc_str = " ".join(locs)
+    final_step = steps  # número real de pasos
 
     problem = f"""
 (define (problem generated-problem)
@@ -170,7 +175,7 @@ def build_problem(objs, locs):
   (:init
     (at robot home)
   )
-  (:goal (step-done-{len(objs)}))
+  (:goal (step-done-{final_step}))
 )
 """
     return problem
@@ -199,7 +204,7 @@ def generate_pddl_from_instruction(instruction):
 
     # construir dominio y problema
     domain = build_domain(acts)
-    problem = build_problem(objs, locs)
+    problem = build_problem(objs, locs, len(acts))
 
     return {
         "domain": domain,
