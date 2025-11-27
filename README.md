@@ -47,12 +47,14 @@ cd Parcial-IA
 - output/ (se crea automáticamente)
 
 ## Ejecutar
-1. En terminal: carpeta parcial-inteligencia artificial
 
-pip install flask requests flask-cors
-python app.py
+-En terminal: carpeta parcial-inteligencia artificial
 
-2. Abre en navegador: http://127.0.0.1:5000
+-pip install flask requests flask-cors
+
+-python app.py
+
+-Abre en navegador: http://127.0.0.1:5000
 
 ## Uso
 - Escribe una instrucción (ES o EN), pulsa *Generar PDDL*.
