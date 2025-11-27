@@ -1,4 +1,4 @@
-# pddl_generator.py (Versión 3.1 NER heurístico por que que fastidio)
+# pddl_generator.py (Versión 2 NER heurístico por que que fastidio)
 
 # NOTA: esta es la version 2.1 del generador PDDL, este utiliza un NER heurístico
 
